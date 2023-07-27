@@ -10,8 +10,27 @@ public class Fibonacci {
         System.out.println(fibEffective(300));
 //        System.out.println(recFib(45));
         System.out.println(recFibWithCash(300));
+        System.out.println(fibLite(300));
+
     }
 
+    /**
+     * Итеративно
+     */
+    private static BigInteger fibLite(int n) {
+        BigInteger a = BigInteger.ZERO;
+        BigInteger b = BigInteger.ONE;
+        for(int i = 0; i < n; i++) {
+            BigInteger c = a.add(b);
+            a = b;
+            b = c;
+        }
+        return a;
+    }
+
+    /**
+     * Итеративно с использованием доп массива
+     */
     private static BigInteger fibEffective(int n) {
         BigInteger[] array = new BigInteger[n + 1];
 
