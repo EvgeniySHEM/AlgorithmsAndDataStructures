@@ -8,7 +8,10 @@ public class GreatestCommonDivisor {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println(greatestCommonDivisor(scanner.nextInt(), scanner.nextInt()));
+        int f = scanner.nextInt();
+        int s = scanner.nextInt();
+        System.out.println(greatestCommonDivisor(f, s));
+        System.out.println(iterGCD(f, s));
 
     }
 
@@ -26,5 +29,19 @@ public class GreatestCommonDivisor {
             return greatestCommonDivisor(a % b, b);
         else
             return greatestCommonDivisor(a, b % a);
+    }
+
+    /**
+     * итеративно (долго)
+     */
+    private static int iterGCD(int a, int b) {
+        int res = 0;
+        int max = Math.max(a,b);
+        for (int i = 1; i <= max; i++) {
+            if(a % i == 0 && b % i == 0) {
+                res = i;
+            }
+        }
+        return res;
     }
 }
