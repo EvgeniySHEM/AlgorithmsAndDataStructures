@@ -7,10 +7,10 @@ public class Fibonacci {
 
     public static void main(String[] args) {
 
-        System.out.println(fibEffective(300));
+        System.out.println(fibEffective(5));
 //        System.out.println(recFib(45));
         System.out.println(recFibWithCash(300));
-        System.out.println(fibLite(300));
+        System.out.println(fibLite(6));
 
     }
 
@@ -20,12 +20,13 @@ public class Fibonacci {
     private static BigInteger fibLite(int n) {
         BigInteger a = BigInteger.ZERO;
         BigInteger b = BigInteger.ONE;
-        for(int i = 0; i < n; i++) {
-            BigInteger c = a.add(b);
+        BigInteger c = BigInteger.ZERO;
+        for(int i = 2; i <= n; i++) {
+            c = a.add(b);
             a = b;
             b = c;
         }
-        return a;
+        return c;
     }
 
     /**
