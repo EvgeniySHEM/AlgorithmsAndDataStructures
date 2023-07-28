@@ -3,14 +3,19 @@ import java.util.Arrays;
 public class Test {
     public static void main(String[] args) {
 //        System.out.println(sumElementsInArray(new int[]{3,2,3}));
-        int[] ints = {1, 2, 4, 5, 7, 9};
+        int[] q = null;
+        System.out.println(Arrays.toString(q));
+//        int[] ints = {1, 2, 4, 5, 7, 9};
 
-        System.out.println(binarySearch(ints, 46, 0, ints.length - 1));
+//        System.out.println(binarySearch(ints, 46, 0, ints.length - 1));
     }
 
 
     //Рекурсивное нахождение суммы элементов массива
     private static int sumElementsInArray(int[] array) {
+        if(array.length == 0)
+            return 0;
+
         if (array.length == 1)
             return array[0];
 
