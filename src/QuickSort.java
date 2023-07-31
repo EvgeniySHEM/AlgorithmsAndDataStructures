@@ -1,9 +1,12 @@
 import java.util.Arrays;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class QuickSort {
+    private static Random random = ThreadLocalRandom.current();
     public static void main(String[] args) {
 
-        int[] sortArr = {12, 6, 4, 1, 15, 10};
+        int[] sortArr = {12, 6, 4, 1, 15, 1, 18, 32,-3, 0, 10};
         quickSort(sortArr, 0, sortArr.length - 1);
         System.out.println(Arrays.toString(sortArr));
 
@@ -14,7 +17,8 @@ public class QuickSort {
         if (sortArr.length == 0 || low >= high) return;
 
         //выбираем опорный элемент
-        int middle = low + (high - low) / 2;
+//        int middle = low + (high - low) / 2;
+        int middle = random.nextInt(low,high + 1);
         int border = sortArr[middle];
 
         //разделияем на подмассивы и меняем местами
