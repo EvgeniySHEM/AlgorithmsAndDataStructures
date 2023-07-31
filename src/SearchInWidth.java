@@ -33,17 +33,20 @@ public class SearchInWidth {
     }
 
     private void run(Person person) {
+        if(count > 0)
+            return;
+
         if(friends.containsKey(person) && !finish.contains(person)) {
-            count++;
-            friends.get(person).forEach(e -> bingo(e));
+            friends.get(person).forEach((e) -> bingo(e, person));
             finish.add(person);
             friends.get(person).forEach(e -> run(e));
         }
     }
 
-    private void bingo(Person person) {
+    private void bingo(Person person, Person person2) {
         if(person.getName().equals("Ric")) {
-            System.out.println(person.getName() + " " + count);
+            System.out.println("Ближайший " + person.getName() + " в друзьях у - " + person2.getName());
+            count++;
         }
     }
 }
