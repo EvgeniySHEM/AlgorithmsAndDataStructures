@@ -28,14 +28,18 @@ public class BinarySearch {
                 .filter(e -> !e.equals(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
+
         search(array, array2);
     }
 
     private void search(int[] array, int[] array2) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int el : array2) {
-            if(map.containsKey(el))
+            if(map.containsKey(el)) {
                 System.out.println(map.get(el) + 1);
+                continue;
+            }
+
 
             int result = binarySearch(array, el, 0, array.length - 1);
             if(result >= 0) {
