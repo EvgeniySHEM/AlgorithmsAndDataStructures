@@ -27,6 +27,7 @@ public class NumberOfInversions {
 
         int[] ints = numberOfInversions.recMethod(array, 0, array.length - 1);
         System.out.println(numberOfInversions.count);
+        scanner.close();
     }
 
     /**
@@ -40,9 +41,7 @@ public class NumberOfInversions {
     private int[] recMethod(int[] array, int left, int right) {
 
         if(left == right) {
-            int[] a = new int[1];
-            System.arraycopy(array, left, a, 0, 1);
-            return a;
+            return new int[]{array[left]};
         }
 
         int mid = left + (right - left) / 2;
@@ -63,31 +62,15 @@ public class NumberOfInversions {
 
         while (i < leftArray.length || j < rightArray.length) {
 
-            if(i == leftArray.length) {
-                while (j < rightArray.length) {
-                    result.add(rightArray[j]);
-                    j++;
-                }
-            }
-
-            if(j == rightArray.length) {
-                while (i < leftArray.length) {
-                    result.add(leftArray[i]);
-                    i++;
-                }
-            }
-
-            while (i < leftArray.length && leftArray[i] <= rightArray[j]) {
+            if(j == rightArray.length || (i < leftArray.length && leftArray[i] <= rightArray[j])) {
                 result.add(leftArray[i]);
                 i++;
             }
-
-            while (i != leftArray.length && j < rightArray.length && leftArray[i] > rightArray[j]) {
+            else {
                 result.add(rightArray[j]);
-                count = count + leftArray.length - i;
+                count += leftArray.length - i;
                 j++;
             }
-
         }
         int[] array = result.stream().mapToInt(e -> (int) e).toArray();
         return array;
