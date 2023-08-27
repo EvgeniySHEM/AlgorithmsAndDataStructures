@@ -5,6 +5,7 @@ public class СкобочнаяПоследовательность {
 
     public static void main(String[] args) throws IOException {
 
+
         Stack<Character> stack = new Stack<>();
         String s = "({[]})";
         for (int i = 0; i < s.length(); i++) {
