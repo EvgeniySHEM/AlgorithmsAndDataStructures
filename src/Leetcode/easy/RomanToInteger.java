@@ -1,12 +1,16 @@
 package Leetcode.easy;
 
 public class RomanToInteger {
-    public int romanToInt(String s) {
+    public static void main(String[] args) {
+        System.out.println(romanToInt("IM"));
+    }
+
+    public static int romanToInt(String s) {
         int result = 0;
         for(int i=0; i<s.length(); i++){
             char current = s.charAt(i);
             if(i>0 && value(current) > value(s.charAt(i-1))){
-                result += value(current) - 2*value(s.charAt(i-1));
+                result = value(current) - result;
             } else {
                 result += value(current);
             }
@@ -14,7 +18,7 @@ public class RomanToInteger {
         return result;
     }
 
-    public int value(char c){
+    public static int value(char c){
         switch(c){
             case 'I': return 1;
             case 'V': return 5;
