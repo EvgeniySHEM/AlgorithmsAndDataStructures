@@ -8,21 +8,20 @@ public class СкобочнаяПоследовательность {
 
         Stack<Character> stack = new Stack<>();
         String s = "({[]})";
-        for (int i = 0; i < s.length(); i++) {
-            switch (s.charAt(i)) {
-                case '(', '{', '[' -> stack.push(s.charAt(i));
+        for (char currentChar : s.toCharArray()) {
+            switch (currentChar) {
+                case '(', '{', '[' -> stack.push(currentChar);
                 case ')', '}', ']' -> {
                     if(stack.isEmpty()) {
                         System.out.println("Неверная последовательность");
                         return;
                     }
                     char charOpen = stack.pop();
-                    char charClosed = s.charAt(i);
-                    if(charOpen == '(' && charOpen != (char)(charClosed - 1) ) {
+                    if(charOpen == '(' && charOpen != (char)(currentChar - 1) ) {
                         System.out.println("Неверная последовательность");
                         return;
                     }
-                    if(charOpen != '(' && charOpen != (char) (charClosed - 2)) {
+                    if(charOpen != '(' && charOpen != (char) (currentChar - 2)) {
                         System.out.println("Неверная последовательность");
                         return;
                     }
